@@ -1,5 +1,6 @@
 from pydantic import BaseModel, validator
 from domain.kind.kind_schema import Kind
+from datetime import date
 
 class Company(BaseModel):
     c_code: str
@@ -12,6 +13,8 @@ class Company(BaseModel):
 class CompanyCreate(BaseModel):
     c_code: str
     c_name: str
+    real_kind: str
+    public_date: date
     
     @validator('c_code', 'c_name')
     def not_empty(cls, v):

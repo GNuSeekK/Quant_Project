@@ -8,7 +8,9 @@ def create_company(db: Session, company_create: CompanyCreate, kind: Kind):
     db_company = Company(
         c_code=company_create.c_code,
         c_name=company_create.c_name,
-        kind = kind
+        kind = kind,
+        real_kind=company_create.real_kind,
+        public_date=company_create.public_date,
     )
     
     db.add(db_company)
@@ -16,3 +18,6 @@ def create_company(db: Session, company_create: CompanyCreate, kind: Kind):
 
 def get_company_by_code(db: Session, c_code: str):
     return db.query(Company).filter(Company.c_code == c_code).first()
+
+def get_company_code_list(db: Session):
+    return db.query(Company.c_code).all()

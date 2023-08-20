@@ -14,6 +14,8 @@ class Company(Base):
     c_code = Column(String(6), primary_key=True, index=True)
     c_name = Column(String(20))
     c_kind = Column(Integer, ForeignKey('kindtable.kind'))
+    real_kind = Column(String(30))
+    public_date = Column(Date)
     kind = relationship('Kind', backref='company')
     
 
