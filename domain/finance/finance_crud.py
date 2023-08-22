@@ -22,8 +22,8 @@ def create_finance(db: Session, finance_create: FinanceCreate, company: Company)
     db.add(db_finance)
     db.commit()
 
-def get_finance_by_code(db: Session, c_code: str):
-    return db.query(Finance).filter(Finance.c_code == c_code).all()
+def get_finance_by_code(db: Session, company: Company):
+    return db.query(Finance).filter(Finance.company == company).all()
 
-def get_finance_by_code_date(db: Session, c_code: str, f_date: datetime):
-    return db.query(Finance).filter(Finance.c_code == c_code).filter(Finance.f_date == f_date).first()
+def get_finance_by_code_date(db: Session, company: Company, f_date: datetime):
+    return db.query(Finance).filter(Finance.company == company).filter(Finance.f_date == f_date).first()

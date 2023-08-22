@@ -104,7 +104,7 @@ def update_finance_table():
                         bps = df.iloc[i,9],
                         eps = df.iloc[i,10],
                     )
-                    if finance_crud.get_finance_by_code_date(db = db, c_code = code, f_date = finance.f_date) is None:
+                    if finance_crud.get_finance_by_code_date(db = db, company = company, f_date = finance.f_date) is None:
                         finance_crud.create_finance(db = db, finance_create = finance, company = company)
                     # print(f'{code} - {company.c_name} - {finance.f_date} - {finance.sales} - {finance.gm} - {finance.ni} - {finance.asset} - {finance.ca} - {finance.cl} - {finance.issued_shares} - {finance.bps} - {finance.eps}')
                     
