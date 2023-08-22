@@ -13,8 +13,8 @@ def create_price(db: Session, price_create: PriceCreate, company: Company):
     db.add(db_price)
     db.commit()
 
-def get_price_by_code(db: Session, c_code: str):
-    return db.query(Price).filter(Price.c_code == c_code).all()
+def get_price_by_code(db: Session, company: Company):
+    return db.query(Price).filter(Price.company == company).all()
 
-def get_price_by_code_date(db: Session, c_code: str, p_date: datetime):
-    return db.query(Price).filter(Price.c_code == c_code).filter(Price.p_date == p_date).first()
+def get_price_by_code_date(db: Session, company: Company, p_date: datetime):
+    return db.query(Price).filter(Price.company == company).filter(Price.p_date == p_date).first()
